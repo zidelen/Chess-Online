@@ -1,33 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main Branch - pjhenry.us</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            text-align: center;
-            padding: 50px;
-        }
-        h1 {
-            color: #4CAF50;
-        }
-        .content {
-            background-color: #fff;
-            padding: 20px;
-            border: 2px solid #4CAF50;
-            display: inline-block;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-        }
-    </style>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="front/css/chessboard-1.0.0.min.css">
+    <title>ChessBoard Test</title>
 </head>
 <body>
-    <h1>Hi Lauren</h1>
-    <div class="content">
-        <p>This is the production version of the site.</p>
-        <p>Deployed from the <strong>main</strong> branch.</p>
-    </div>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="front/js/chessboard-1.0.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js"></script>
+Status: <span id="status"></span>
+<div id="myBoard" style="width: 400px; margin: auto;"></div>
+
+<p>FEN: <span id="fen"></span></p>
+<p>PGN: <span id="pgn"></span></p>
+
+<!-- Include the new external JavaScript file -->
+<script src="front/js/legalMoves.js"></script>
 </body>
 </html>
