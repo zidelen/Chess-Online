@@ -1,6 +1,4 @@
-// NOTE: this example uses the chess.js library:
-// https://github.com/jhlywa/chess.js
-
+// Initialize the chessboard and game
 var board = null;
 var game = new Chess();
 var $status = $('#status');
@@ -47,6 +45,9 @@ function onDrop(source, target) {
 
   // illegal move
   if (move === null) return 'snapback';
+
+  // Update the board orientation based on whose turn it is
+  updateBoardOrientation();
 
   updateStatus();
 }
@@ -103,6 +104,15 @@ function updateStatus() {
   $status.html(status);
   $fen.html(game.fen());
   $pgn.html(game.pgn());
+}
+
+// Update the board orientation based on the current turn
+function updateBoardOrientation() {
+  if (game.turn() === 'w') {
+    board.orientation('white');
+  } else {
+    board.orientation('black');
+  }
 }
 
 var config = {
