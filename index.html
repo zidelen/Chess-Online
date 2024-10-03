@@ -1,25 +1,66 @@
 <!doctype html>
-<html>
+<html lang="en" translate="no">
 <head>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="front/css/chessboard-1.0.0.min.css">
-    <link rel="stylesheet" href="front/css/style.css">
-
+    <meta charset="utf-8"/>
     <title>ChessBoard Test</title>
-</head>
-<body>
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="front/js/chessboard-1.0.0.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js"></script>
-Status: <span id="status"></span>
-<div id="myBoard" style="width: 400px; margin: auto;"></div>
-<p>FEN: <span id="fen"></span></p>
-<p>PGN: <span id="pgn"></span></p>
 
+    <!-- CSS Stylesheets -->
+    <link href="front/css/chessboard-1.0.0.css" rel="stylesheet"> <!-- Chessboard.js library stylesheet -->
+    <link href="front/css/style.css" rel="stylesheet"> <!-- Custom style sheet -->
+    <link href="front/css/sidebar.css" rel="stylesheet"> <!-- Sidebar style sheet -->
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="front/js/chessboard-1.0.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js"></script>
+</head>
+
+<body>
+<!-- Left Sidebar Navigation -->
+<div class="sidebar" id="leftbar">
+    <h2>Left Sidebar</h2>
+    <div class="links">
+        <a href="#">Test</a>
+        <a href="#">Test</a>
+        <a href="#">Test</a>
+        <a href="#">Test</a>
+        <a href="#">Test</a>
+    </div>
+</div>
+
+<!-- Main Content Area -->
+<div class="main-content">
+    <p>Status: <span id="status"></span></p>
+    <div id="myBoard" style="width: 400px; margin: auto;"></div>
+    <p>FEN: <span id="fen"></span></p>
+</div>
+
+<!-- Right Sidebar Navigation -->
+<div class="sidebar" id="rightbar">
+    <h2>Game Information</h2>
+    <div class="links">
+        <p>PGN:</p>
+        <div id="pgn-container">
+            <ul id="pgn" style="white-space: pre-wrap; list-style: none; padding: 0;"></ul> <!-- Use a list for individual moves -->
+        </div>
+    </div>
+    <!-- Chatbox Container -->
+    <div class="chat-container">
+        <h3>Chat</h3>
+        <div class="chatbox">
+            <!-- Placeholder messages for now -->
+            <div class="message">Hello!</div>
+            <div class="message">Welcome to our game!</div>
+            <!-- More messages can go here -->
+        </div>
+        <!-- Chat Input (Optional, can be hidden if just for display) -->
+        <div class="chat-input">
+            <input type="text" placeholder="Type your message..." />
+            <button type="button">Send</button>
+        </div>
+    </div>
+</div>
 
 <script src="front/js/legalMoves.js"></script>
-
-
-
-
 </body>
+</html>

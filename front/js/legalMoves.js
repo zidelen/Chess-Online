@@ -102,8 +102,19 @@ function updateStatus() {
 
   $status.html(status);
   $fen.html(game.fen());
-  $pgn.html(game.pgn());
+
+  // Split PGN into individual moves and format them
+  var moves = game.pgn().split(' '); // Split PGN by spaces to get moves
+  var formattedPGN = ''; // Initialize a variable to hold formatted PGN
+
+  // Loop through moves and create a new line for each move pair
+  for (let i = 0; i < moves.length; i += 3) {
+    formattedPGN += `${moves[i]} ${moves[i + 1] || ''} ${moves[i + 2] || ''}<br>`;
+  }
+
+  $pgn.html(formattedPGN); // Update the PGN container with formatted PGN
 }
+
 
 var config = {
   draggable: true,
