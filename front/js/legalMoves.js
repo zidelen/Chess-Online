@@ -1,4 +1,6 @@
-// Initialize the chessboard and game
+// NOTE: this example uses the chess.js library:
+// https://github.com/jhlywa/chess.js
+
 var board = null;
 var game = new Chess();
 var $status = $('#status');
@@ -45,9 +47,6 @@ function onDrop(source, target) {
 
   // illegal move
   if (move === null) return 'snapback';
-
-  // Update the board orientation based on whose turn it is
-  updateBoardOrientation();
 
   updateStatus();
 }
@@ -103,17 +102,19 @@ function updateStatus() {
 
   $status.html(status);
   $fen.html(game.fen());
-  $pgn.html(game.pgn());
+
+  // Split PGN into individual moves and format them
+  var moves = game.pgn().split(' '); // Split PGN by spaces to get moves
+  var formattedPGN = ''; // Initialize a variable to hold formatted PGN
+
+  // Loop through moves and create a new line for each move pair
+  for (let i = 0; i < moves.length; i += 3) {
+    formattedPGN += `${moves[i]} ${moves[i + 1] || ''} ${moves[i + 2] || ''}<br>`;
+  }
+
+  $pgn.html(formattedPGN); // Update the PGN container with formatted PGN
 }
 
-// Update the board orientation based on the current turn
-function updateBoardOrientation() {
-  if (game.turn() === 'w') {
-    board.orientation('white');
-  } else {
-    board.orientation('black');
-  }
-}
 
 var config = {
   draggable: true,

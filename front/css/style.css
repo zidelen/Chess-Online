@@ -1,16 +1,146 @@
-body {
+/* General Page */
+html, body {
+    overflow: hidden;
+    height: 100%;
+    margin: 0;
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
+}
+
+/* Sidebar Styles (applied to both left and right) */
+.sidebar {
+    width: 280px; /* Updated width for both sidebars */
+    height: 100vh; /* Full height of the viewport */
+    background-color: #333;
+    color: #fff;
+    position: fixed;
+    top: 0;
     text-align: center;
-    padding: 50px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    padding: 0;
+    z-index: 1; /* Ensure sidebars are above other elements */
 }
-h1 {
-    color: #FF9800;
-}
-.content {
-    background-color: #fff;
+
+/* Sidebar Header */
+.sidebar h2, .sidebar h3 {
+    margin: 0;
     padding: 20px;
-    border: 2px solid #FF9800;
-    display: inline-block;
+    background-color: #444; /* Slightly darker background for the header */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Shadow under the header */
+    z-index: 1; /* Make sure the header stays on top */
+    position: sticky; /* Keeps the header fixed at the top */
+    top: 0; /* Sticky position at the top */
+}
+
+/* Sidebar Links Container */
+.sidebar .links {
+    overflow-y: auto; /* Enable scrolling for the links */
+    padding: 20px;
+    flex: 1; /* Take up remaining space in the sidebar */
+}
+
+/* Sidebar Links */
+.sidebar a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 0;
+    transition: background 0.3s;
+}
+
+/* Sidebar Link Hover Effect */
+.sidebar a:hover {
+    background-color: #575757;
+}
+
+/* PGN Container Styles */
+#pgn-container {
+    background: #222;
+    padding: 10px;
+    margin: 10px 0;
+    height: 110px; /* Set height for scrollable area */
+    overflow-y: auto; /* Allow vertical scrolling */
+    border: 1px solid #444;
+}
+
+/* Chat Container Styles */
+.chat-container {
+    padding: 10px;
+    background-color: #222;
+    margin: 20px;
+    border: 1px solid #444;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Chatbox Styles */
+.chatbox {
+    background: #333;
+    height: 150px; /* Fixed height */
+    overflow-y: auto; /* Scrollable for messages */
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #444;
+}
+
+/* Chat Messages */
+.chatbox .message {
+    background: #444;
+    margin: 5px 0;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+/* Chat Input Styles */
+.chat-input {
+    display: flex;
+    justify-content: space-between;
+    background: #333;
+    padding: 10px;
+    border-top: 1px solid #444;
+}
+
+.chat-input input {
+    width: calc(100% - 60px); /* Leave space for button */
+    padding: 5px;
+    border: none;
+    background: #444;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.chat-input button {
+    padding: 5px 10px;
+    background: #575757;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    color: #fff;
+}
+
+/* Left Sidebar Specific */
+#leftbar {
+    left: 0; /* Align left sidebar to the left of the viewport */
+}
+
+/* Right Sidebar Specific */
+#rightbar {
+    right: 0; /* Align right sidebar to the right of the viewport */
+}
+#rightbar .links {
+    overflow-y: hidden;
+    right: 0; /* Align right sidebar to the right of the viewport */
+}
+
+/* Main Content Styles */
+.main-content {
+    margin-left: 280px; /* Adjusted margin to account for left sidebar width */
+    margin-right: 280px; /* Adjusted margin to account for right sidebar width */
+    padding: 20px;
+    text-align: center;
+    overflow-y: auto; /* Allow vertical scrolling in the main content */
+    background-color: #fff;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    height: calc(100vh - 40px); /* Ensure the content area fits within view */
 }
