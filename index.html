@@ -16,5 +16,39 @@ Status: <span id="status"></span>
 <p>FEN: <span id="fen"></span></p>
 <p>PGN: <span id="pgn"></span></p>
 <script src="front/js/legalMoves.js"></script>
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    const socket = io();
+
+    // Connect to the server
+    socket.on('connect', () => {
+        console.log('Connected to the server');
+        document.getElementById('status').textContent = 'Connected';
+    });
+
+    // Handle disconnection
+    socket.on('disconnect', () => {
+        console.log('Disconnected from server');
+        document.getElementById('status').textContent = 'Disconnected';
+    });
+
+    // Listen for updates on the chess game
+    socket.on('gameUpdate', (gameState) => {
+        console.log('Game state received:', gameState);
+        // Update the chessboard based on the received game state
+        board.position(gameState.fen);
+        document.getElementById('fen').textContent = gameState.fen;
+        document.getElementById('pgn').textContent = gameState.pgn;
+    });
+
+    // Send a move to the server when a piece is moved
+    board.onDrop = (source, target) => {
+        const move = { from: source, to: target };
+        socket.emit('move', move);
+        console.log('Move sent:', move);
+    };
+</script>
+
 </body>
 </html>
